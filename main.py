@@ -52,6 +52,21 @@ async def avg(li):
     ls = tonumlist(li)
     return np.average(ls)
 
+@app.get("/mean")
+async def avg(li):
+    ls = tonumlist(li)
+    return np.mean(ls)
+
+@app.get("/max")
+async def avg(li):
+    ls = tonumlist(li)
+    return np.max(ls)
+
+@app.get("/min")
+async def avg(li):
+    ls = tonumlist(li)
+    return np.min(ls)
+
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
     if(len(ctzid) != 13):
