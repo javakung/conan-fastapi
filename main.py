@@ -22,6 +22,12 @@ async def add(a: int = 0, b: int = 0):
 async def mul(a: int = 0, b: int = 0):
     return a*b
 
+@app.get("/sort")
+async def sort(li):
+    ls = li.split(',')
+    ls.sort()
+    return ls
+
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
     if(len(ctzid) != 13):
