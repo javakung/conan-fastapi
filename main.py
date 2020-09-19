@@ -25,8 +25,10 @@ async def mul(a: int = 0, b: int = 0):
 @app.get("/sort")
 async def sort(li):
     ls = li.split(',')
-    ls.sort()
-    return ls
+    for i in range(len(ls)):
+        nlist[i] = int(ls[i])
+    nlist.sort()
+    return nlist
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
