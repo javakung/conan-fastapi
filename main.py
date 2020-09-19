@@ -45,7 +45,7 @@ async def desc(li):
 @app.get("/sum")
 async def sum(li):
     ls = tonumlist(li)
-    return np.sum(ls, dtype = np.float32)
+    return np.sum(np.array(ls))
 
 @app.get("/avg")
 async def avg(li):
