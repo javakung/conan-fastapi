@@ -22,13 +22,21 @@ async def add(a: int = 0, b: int = 0):
 async def mul(a: int = 0, b: int = 0):
     return a*b
 
-@app.get("/sort")
-async def sort(li):
+@app.get("/asc")
+async def asc(li):
     ls = li.split(',')
     for i in range(len(ls)):
-        nlist[i] = int(ls[i])
-    nlist.sort()
-    return nlist
+        ls[i] = int(ls[i])
+    ls.sort()
+    return ls
+
+@app.get("/desc")
+async def desc(li):
+    ls = li.split(',')
+    for i in range(len(ls)):
+        ls[i] = int(ls[i])
+    ls.sort(reverse=True)
+    return ls
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
