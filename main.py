@@ -43,7 +43,8 @@ async def desc(li):
 
 @app.get("/sum")
 async def sum(li):
-    asum = sum(tonumlist(li))
+    asum = tonumlist(li)
+    asum = sum(asum)
     return asum
 
 @app.get("/ctzid-validation")
