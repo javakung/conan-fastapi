@@ -28,14 +28,16 @@ async def asc(li):
     ls = li.split(',')
     for i in range(len(ls)):
         ls[i] = int(ls[i])
-    return ls.sort()
+    ls.sort()
+    return ls
 
 @app.get("/desc")
 async def desc(li):
     ls = li.split(',')
     for i in range(len(ls)):
         ls[i] = int(ls[i])
-    return ls.sort(reverse=True)
+    ls.sort(reverse=True)
+    return ls
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
