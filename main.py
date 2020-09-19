@@ -27,7 +27,7 @@ async def mul(a: int = 0, b: int = 0):
 def tonumlist(li):
     ls = li.split(',')
     for i in range(len(ls)):
-        ls[i] = int(ls[i])
+        ls[i] = float(ls[i])
     return list(ls)
 
 @app.get("/asc")
@@ -45,7 +45,7 @@ async def desc(li):
 @app.get("/sum")
 async def sum(li):
     ls = tonumlist(li)
-    return np.sum(ls)
+    return np.sum(ls, dtype = np.float32)
 
 @app.get("/avg")
 async def avg(li):
@@ -60,12 +60,12 @@ async def avg(li):
 @app.get("/max")
 async def avg(li):
     ls = tonumlist(li)
-    return np.max(ls)
+    return np.amax(ls)
 
 @app.get("/min")
 async def avg(li):
     ls = tonumlist(li)
-    return np.min(ls)
+    return np.amin(ls)
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
