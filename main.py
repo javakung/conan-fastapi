@@ -20,7 +20,7 @@ async def mul(a: int = 0, b: int = 0):
     return a*b
 
 @app.get("/ctzid-validation")
-def ctzIdValidate(ctzid):
+async def ctzIdValidate(ctzid):
   if(len(ctzid) != 13): # ถ้า pid ไม่ใช่ 13 ให้คืนค่า False
     return False
   num=0 # ค่าสำหรับอ้างอิง index list ข้อมูลบัตรประชาชน
