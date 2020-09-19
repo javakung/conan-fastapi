@@ -31,12 +31,14 @@ def tonumlist(li):
 
 @app.get("/asc")
 async def asc(li):
-    ls = tonumlist(li).sort()
+    ls = tonumlist(li)
+    ls.sort()
     return ls
 
 @app.get("/desc")
 async def desc(li):
-    ls = tonumlist(li).sort(reverse=True)
+    ls = tonumlist(li)
+    ls.sort(reverse=True)
     return ls
 
 @app.get("/sum")
