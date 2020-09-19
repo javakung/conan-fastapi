@@ -26,26 +26,29 @@ async def mul(a: int = 0, b: int = 0):
 async def ctzIdValidate(ctzid):
     if(len(ctzid) != 13):
         return result(False)
+    
     num=0 
     sum=0
     num2=13
     listdata=list(ctzid)
+    
     while num<12:
         sum+=int(listdata[num])*(num2-num)
         num+=1
+    
     digit13 = sum%11
+    
     if digit13==0:
         digit13=1
     elif digit13==1:
         digit13=0
     else:
         digit13=11-digit13
+        
     if digit13==int(listdata[12]):
         return result(True)
     else:
         return result(False)
-
-
 
 
 if __name__ == '__main__':
