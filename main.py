@@ -49,7 +49,7 @@ async def sum(li):
 @app.get("/avg")
 async def avg(li):
     ls = tonumlist(li)
-    return np.avg(ls)
+    return np.average(ls)
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
