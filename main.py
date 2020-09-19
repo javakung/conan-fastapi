@@ -31,15 +31,18 @@ def tonumlist(li):
 
 @app.get("/asc")
 async def asc(li):
-    return tonumlist(li).sort()
+    ls = tonumlist(li).sort()
+    return ls
 
 @app.get("/desc")
 async def desc(li):
-    return tonumlist(li).sort(reverse=True)
+    ls = tonumlist(li).sort(reverse=True)
+    return ls
 
 @app.get("/sum")
 async def sum(li):
-    return sum(tonumlist(li))
+    asum = sum(tonumlist(li))
+    return asum
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
