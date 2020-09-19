@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
+import numpy as np
 
 app = FastAPI()
 
@@ -43,9 +44,11 @@ async def desc(li):
 
 @app.get("/sum")
 async def sum(li):
-    asum = tonumlist(li)
-    asum = sum(asum)
-    return asum
+    return np.sum(tonumlist(li))
+
+@app.get("/avg")
+async def avg(li):
+    return np.avg(tonumlist(li))
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
