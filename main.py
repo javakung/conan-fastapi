@@ -53,17 +53,17 @@ async def avg(li):
     return np.average(ls)
 
 @app.get("/mean")
-async def avg(li):
+async def mean(li):
     ls = tonumlist(li)
     return np.mean(ls)
 
 @app.get("/max")
-async def avg(li):
+async def max(li):
     ls = tonumlist(li)
     return np.amax(ls)
 
 @app.get("/min")
-async def avg(li):
+async def min(li):
     ls = tonumlist(li)
     return np.amin(ls)
 
