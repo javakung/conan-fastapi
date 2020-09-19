@@ -23,21 +23,19 @@ async def mul(a: int = 0, b: int = 0):
     return a*b
 
 
-@app.get("/asc")
-async def asc(li):
+async def tonumlist(li):
     ls = li.split(',')
     for i in range(len(ls)):
         ls[i] = int(ls[i])
-    ls.sort()
     return ls
+
+@app.get("/asc")
+async def asc(li):
+    return tonumlist(li).sort()
 
 @app.get("/desc")
 async def desc(li):
-    ls = li.split(',')
-    for i in range(len(ls)):
-        ls[i] = int(ls[i])
-    ls.sort(reverse=True)
-    return ls
+    return tonumlist(li).sort(reverse=True)
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
