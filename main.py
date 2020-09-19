@@ -23,11 +23,11 @@ async def mul(a: int = 0, b: int = 0):
     return a*b
 
 
-async def tonumlist(li):
+def tonumlist(li):
     ls = li.split(',')
     for i in range(len(ls)):
         ls[i] = int(ls[i])
-    return ls
+    return list(ls)
 
 @app.get("/asc")
 async def asc(li):
@@ -36,6 +36,10 @@ async def asc(li):
 @app.get("/desc")
 async def desc(li):
     return tonumlist(li).sort(reverse=True)
+
+@app.get("/sum")
+async def sum(li):
+    return sum(tonumlist(li))
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
