@@ -3,6 +3,9 @@ import uvicorn
 
 app = FastAPI()
 
+def result(res):
+    return {"result":res}
+
 @app.get("/")
 async def main():
     return 'Hello World'
@@ -22,7 +25,7 @@ async def mul(a: int = 0, b: int = 0):
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
     if(len(ctzid) != 13):
-        return False
+        return result(False)
     num=0 
     sum=0
     num2=13
@@ -38,9 +41,11 @@ async def ctzIdValidate(ctzid):
     else:
         digit13=11-digit13
     if digit13==int(listdata[12]):
-        return True
+        return result(True)
     else:
-        return False
+        return result(False)
+
+
 
 
 if __name__ == '__main__':
