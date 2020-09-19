@@ -22,26 +22,25 @@ async def add(a: int = 0, b: int = 0):
 async def mul(a: int = 0, b: int = 0):
     return a*b
 
+
 @app.get("/asc")
 async def asc(li):
     ls = li.split(',')
     for i in range(len(ls)):
         ls[i] = int(ls[i])
-    ls.sort()
-    return ls
+    return ls.sort()
 
 @app.get("/desc")
 async def desc(li):
     ls = li.split(',')
     for i in range(len(ls)):
         ls[i] = int(ls[i])
-    ls.sort(reverse=True)
-    return ls
+    return ls.sort(reverse=True)
 
 @app.get("/ctzid-validation")
 async def ctzIdValidate(ctzid):
     if(len(ctzid) != 13):
-        return result(False)
+        return False
     
     num=0 
     sum=0
@@ -62,9 +61,9 @@ async def ctzIdValidate(ctzid):
         digit13=11-digit13
         
     if digit13==int(listdata[12]):
-        return result(True)
+        return True
     else:
-        return result(False)
+        return False
 
 
 if __name__ == '__main__':
