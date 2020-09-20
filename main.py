@@ -85,16 +85,9 @@ async def ctzIdValidate(ctzid):
         num+=1
     
     d13 = sum%11
-    
-    # if d13==0:
-    #     d13=1
-    # elif d13==1:
-    #     d13=0
-    # else:
-    #     d13=11-d13
-    
-    d13 = d13==0?1:d13==1?0:11-d13
         
+    d13 = 1 if d13==0 else 0 if d13==1 else 11-d13
+    
     if d13==int(listdata[12]):
         return True
     else:
