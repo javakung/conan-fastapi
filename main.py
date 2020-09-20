@@ -73,11 +73,11 @@ async def min(li):
 
 @app.get("/validation-ctzid")
 async def validation_ctzid(text):
-    if(len(ctzid) != 13):
+    if(len(text) != 13):
         return False
     
     sum = 0
-    listdata = list(ctzid)
+    listdata = list(text)
     
     for i in range(12):
         sum+=int(listdata[i])*(13-i)
