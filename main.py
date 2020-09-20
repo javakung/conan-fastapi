@@ -93,8 +93,8 @@ async def validation_ctzid(text):
 
 @app.get("/validation-email")
 async def validation_email(text):  
-  regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-    if(re.search(regex,text)):
+    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    if re.search(regex,text):
         return True
     else:
         return False
