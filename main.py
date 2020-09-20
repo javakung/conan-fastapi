@@ -75,17 +75,14 @@ async def ctzIdValidate(ctzid):
     if(len(ctzid) != 13):
         return False
     
-    num=0 
-    sum=0
-    num2=13
-    listdata=list(ctzid)
+    sum = 0
+    listdata = list(ctzid)
     
-    while num<12:
-        sum+=int(listdata[num])*(num2-num)
-        num+=1
-    
-    d13 = sum%11
+    for i in range(12):
+        sum+=int(listdata[i])*(13-i)
         
+    d13 = sum%11
+            
     d13 = 1 if d13==0 else 0 if d13==1 else 11-d13
     
     if d13==int(listdata[12]):
