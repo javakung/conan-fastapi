@@ -4,6 +4,7 @@
 from fastapi import FastAPI
 import uvicorn
 import numpy as np
+import re
 
 app = FastAPI()
 
@@ -70,8 +71,8 @@ async def min(li):
     ls = tonumlist(li)
     return np.amin(ls)
 
-@app.get("/ctzid-validation")
-async def ctzIdValidate(ctzid):
+@app.get("/validation-ctzid")
+async def validation_ctzid(text):
     if(len(ctzid) != 13):
         return False
     
@@ -86,6 +87,14 @@ async def ctzIdValidate(ctzid):
     d13 = 1 if d13==0 else 0 if d13==1 else 11-d13
     
     if d13==int(listdata[12]):
+        return True
+    else:
+        return False
+
+@app.get("/validation-email")
+async def validation_email(text):  
+  regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    if(re.search(regex,text)):
         return True
     else:
         return False
