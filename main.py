@@ -1,3 +1,6 @@
+#Author: Chatchawal Sangkeettrakarn
+#Date: September 20,2020.
+
 from fastapi import FastAPI
 import uvicorn
 import numpy as np
@@ -81,16 +84,18 @@ async def ctzIdValidate(ctzid):
         sum+=int(listdata[num])*(num2-num)
         num+=1
     
-    digit13 = sum%11
+    d13 = sum%11
     
-    if digit13==0:
-        digit13=1
-    elif digit13==1:
-        digit13=0
-    else:
-        digit13=11-digit13
+    # if d13==0:
+    #     d13=1
+    # elif d13==1:
+    #     d13=0
+    # else:
+    #     d13=11-d13
+    
+    d13 = d13==0?1:d13==1?0:11-d13
         
-    if digit13==int(listdata[12]):
+    if d13==int(listdata[12]):
         return True
     else:
         return False
