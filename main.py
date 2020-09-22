@@ -7,6 +7,7 @@ import numpy as np
 import re
 import requests
 from bs4 import BeautifulSoup
+from fastapi.responses import PlainTextResponse
 
 app = FastAPI()
 
@@ -102,7 +103,7 @@ async def validation_email(text):
         return False
     
     
-@app.get("/google-search")
+@app.get("/google-search",response_class=PlainTextResponse)
 def google_search(text):
     
     headers = {
