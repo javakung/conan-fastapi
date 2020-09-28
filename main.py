@@ -30,6 +30,10 @@ async def add(a: int = 0, b: int = 0):
 async def mul(a: int = 0, b: int = 0):
     return a*b
 
+@app.get("/pow")
+async def pow(a: int = 0, b: int = 0):
+    return a^b
+
 
 def tonumlist(li):
     ls = li.split(',')
@@ -131,6 +135,8 @@ def google_search(text):
             break
     
     return(result)
+
+
 
 
 if __name__ == '__main__':
