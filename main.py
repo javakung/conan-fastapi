@@ -5,6 +5,7 @@ from fastapi import FastAPI
 import uvicorn
 import numpy as np
 import re
+import math
 import requests
 from bs4 import BeautifulSoup
 from fastapi.responses import PlainTextResponse
@@ -32,7 +33,7 @@ async def mul(a: int = 0, b: int = 0):
 
 @app.get("/pow")
 async def pow(a: int = 0, b: int = 0):
-    return a^b
+    return math.pow(a,b)
 
 
 def tonumlist(li):
