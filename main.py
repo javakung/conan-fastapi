@@ -89,15 +89,10 @@ async def validation_ctzid(text):
     
     for i in range(12):
         sum+=int(listdata[i])*(13-i)
+
+    d13 = (11-(sum%11))%10
         
-    d13 = sum%11
-            
-    d13 = 1 if d13==0 else 0 if d13==1 else 11-d13
-    
-    if d13==int(listdata[12]):
-        return True
-    else:
-        return False
+    return d13==int(listdata[12])
 
 @app.get("/validation-email")
 async def validation_email(text):  
