@@ -31,6 +31,10 @@ async def add(a: int = 0, b: int = 0):
 async def mul(a: int = 0, b: int = 0):
     return a*b
 
+@app.get("/mul2")
+async def mul(a: int = 0, b: int = 0):
+    return a*b
+
 @app.get("/pow")
 async def pow(a: int = 0, b: int = 0):
     return math.pow(a,b)
