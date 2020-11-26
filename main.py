@@ -32,7 +32,7 @@ async def mul(a: int = 0, b: int = 0):
     return a*b
 
 @app.get("/mul2")
-async def mul(a: int = 0, b: int = 0):
+async def mul2(a: int = 0, b: int = 0):
     return a*b
 
 @app.get("/pow")
