@@ -114,6 +114,42 @@ async def min(li):
     return np.amin(ls)
 
 
+@app.get("/NormalizeNumber")
+async def number(Num: str = ""):
+    if '.' in Num:
+        nsplit = Num.split('.')
+        if (',' in nsplit[0]):
+            n2split = nsplit[0].split(',')
+            for ch in n2split[1::]:
+                if len(ch) == 3:
+                    a1 = float(Num.replace(',', ''))
+                    status = 'True'
+                else:
+                    a1 = Num
+                    status = 'False'
+        else:
+            a1 = float(Num.replace(',', ''))
+            status = 'True'
+    elif len(Num) == 3:
+        a1 = float(Num.replace(',', ''))
+        status = 'True'
+    elif ',' in Num:
+        Csplit = Num.split(',')
+        for b in Csplit[1::]:
+            if len(b) == 3:
+                a1 = float(Num.replace(',', ''))
+                status = 'True'
+            else:
+                a1 = Num
+                status = 'False'
+    else:
+        a1 = Num
+        status = 'False'
+
+    jsonout = {'a1': a1, 'status': status}
+    return jsonout
+
+
 @app.get("/validation-ctzid")
 async def validation_ctzid(text):
     if(len(text) != 13):
