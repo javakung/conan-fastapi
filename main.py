@@ -10,6 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 from fastapi.responses import PlainTextResponse
 import json
+from collections import Counter
 
 app = FastAPI()
 
@@ -59,6 +60,24 @@ async def work(text : str =""):
     #result = [item for items, c in Counter(char_frequency).most_common() for item in [items] * c]
     #jsonout =  {'char' : sorted(char_frequency.items())} #,key=lambda item: item[1], reverse= True
 
+    return string_out
+
+@app.get("/CountWordnString",response_class=PlainTextResponse)
+async def CountWordnString(text : str ="Sample Text!", rng : str = "1,1" ):
+    string_out= ""
+    x = rng.split(',')
+    rng1 = int(x[0])
+    rng2 = int(x[1]) + 1
+    l = rng1
+    for l in range(rng1,rng2):
+        raw_list =[text[i:i+l] for i in range(0, len(text), l)]
+        result = Counter(raw_list)
+        x = sorted(result.items(),key=lambda item: item[1],reverse= True)
+        string_out += 'Range =' + str(l) +'\n'
+        for obj in x :
+            string_out += '"' + obj[0] + '"' + ' = ' + str(obj[1]) + '\n'
+    l += 1
+    
     return string_out
 
 @app.get("/pow")
