@@ -132,7 +132,9 @@ def google_search(text):
     
     return(result)
 
-
+@app.get("/countlength")
+async def countlength(text):
+    return len(text)
 
 
 if __name__ == '__main__':
